@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evolutia Empresarial — Portafolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#0C1F30;
+    --navy:#16334D;
+    --steel:#5B82A8;
+    --steel-light:#9FBCD6;
+    --mist:#EEF3F8;
+    --white:#FFFFFF;
+    --ink:#1C2A38;
+    --max:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Poppins',sans-serif;color:var(--ink);background:var(--white);line-height:1.6;font-weight:300}
+  h1,h2,h3{font-weight:600;color:var(--navy);line-height:1.2}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+  .eyebrow{display:inline-block;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--steel);font-weight:500;margin-bottom:16px}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--mist)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand svg{width:30px;height:30px}
+  .brand span{font-weight:600;font-size:15px;color:var(--navy);letter-spacing:.04em}
+  .brand span em{font-style:normal;font-weight:300;color:var(--steel)}
+  .navlinks{display:flex;gap:28px}
+  .navlinks a{text-decoration:none;color:var(--ink);font-size:13px;font-weight:400;transition:color .2s}
+  .navlinks a:hover,.navlinks a:focus{color:var(--steel)}
+  .nav-cta{background:var(--navy);color:#fff !important;padding:8px 18px;border-radius:999px;font-weight:500 !important}
+  .nav-cta:hover{background:var(--steel)}
+  @media(max-width:760px){.navlinks a:not(.nav-cta){display:none}}
+
+  /* HERO */
+  header{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 70%,#1E456A 100%);color:#fff;padding:160px 0 110px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+  header h1{color:#fff;font-size:clamp(34px,5vw,58px);font-weight:700;letter-spacing:.01em}
+  header h1 small{display:block;font-weight:300;font-size:.42em;letter-spacing:.34em;color:var(--steel-light);margin-top:8px}
+  .hero-sub{margin-top:24px;font-size:18px;color:#D7E3EE;max-width:46ch}
+  .hero-actions{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:14px 30px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px;transition:transform .2s,background .2s}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{transform:translateY(-2px)}
+  .btn-ghost{border:1px solid var(--steel-light);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.08)}
+  .orbit-stage{display:flex;justify-content:center}
+  .orbit-stage svg{width:min(300px,70vw);height:auto}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr}.orbit-stage{order:-1}.orbit-stage svg{width:160px}}
+  @keyframes drawArc{from{stroke-dashoffset:760}to{stroke-dashoffset:0}}
+  @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  .arc{stroke-dasharray:760;stroke-dashoffset:760;animation:drawArc 1.6s ease forwards .2s}
+  .dot1{opacity:0;animation:rise .7s ease forwards 1.5s}
+  .dot2{opacity:0;animation:rise .7s ease forwards 1.8s}
+  .hero-grid>div:first-child{opacity:0;animation:rise .8s ease forwards .1s}
+
+  section{padding:96px 0}
+  .section-head{max-width:62ch;margin-bottom:56px}
+  .section-head p{margin-top:14px;color:#46586B;font-size:17px}
+  h2{font-size:clamp(26px,3.4vw,38px)}
+
+  /* PAIN */
+  #problema{background:var(--mist)}
+  .pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+  .pain{background:#fff;border-radius:14px;padding:30px 26px;border:1px solid #DEE8F1;transition:transform .25s,box-shadow .25s;cursor:default}
+  .pain:hover{transform:translateY(-5px);box-shadow:0 16px 32px rgba(22,51,77,.10)}
+  .pain h3{font-size:17px;margin:14px 0 8px}
+  .pain p{font-size:14px;color:#52647A}
+  .pain .glyph{width:36px;height:36px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center}
+  .pain .glyph svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  /* SÍNTOMAS VS CAUSAS */
+  .cause-block{margin-top:56px}
+  .cause-intro{max-width:64ch;color:#46586B;font-size:16px;margin-bottom:32px}
+  .cause-cols{display:grid;grid-template-columns:1fr 70px 1fr;gap:18px;align-items:stretch}
+  @media(max-width:760px){.cause-cols{grid-template-columns:1fr}.cause-arrow{transform:rotate(90deg);justify-self:center}}
+  .cause-col{background:#fff;border:1px solid #DEE8F1;border-radius:16px;padding:32px}
+  .cause-col h3{font-size:16px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
+  .cause-col ul{list-style:none}
+  .cause-col li{padding:8px 0 8px 24px;position:relative;font-size:15px;color:#37485C}
+  .cause-col li::before{content:"";position:absolute;left:0;top:15px;width:12px;height:2px;background:var(--steel)}
+  .cause-col-dark{background:var(--navy);border-color:var(--navy)}
+  .cause-col-dark h3{color:#fff}
+  .cause-col-dark li{color:#D7E3EE}
+  .cause-col-dark li::before{background:var(--steel-light)}
+  .cause-arrow{display:flex;align-items:center;justify-content:center}
+  .cause-arrow svg{width:48px}
+
+  /* ÁREAS */
+  .area-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .area{border:1px solid #DEE8F1;border-radius:16px;padding:30px 26px;transition:border-color .25s,transform .25s}
+  .area:hover{border-color:var(--steel);transform:translateY(-4px)}
+  .area h3{font-size:17px;margin-bottom:8px}
+  .area p{font-size:14px;color:#52647A}
+  .chips{margin-top:36px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .chips-label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7A8BA0;font-weight:500;margin-right:6px}
+  .chip{font-size:13px;color:var(--navy);border:1px solid var(--steel-light);border-radius:999px;padding:7px 16px;background:var(--mist)}
+
+  /* METODOLOGÍA */
+  .steps{display:grid;grid-template-columns:340px 1fr;gap:48px;align-items:start}
+  @media(max-width:860px){.steps{grid-template-columns:1fr}}
+  .step-list{display:flex;flex-direction:column;gap:6px}
+  .step-btn{display:flex;align-items:center;gap:16px;padding:18px 20px;border:none;background:transparent;border-radius:12px;cursor:pointer;text-align:left;font-family:inherit;transition:background .2s}
+  .step-btn .n{width:38px;height:38px;border-radius:50%;border:2px solid var(--steel);color:var(--steel);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;flex-shrink:0;transition:.2s}
+  .step-btn .t{font-weight:500;font-size:16px;color:var(--ink)}
+  .step-btn:hover{background:var(--mist)}
+  .step-btn.active{background:var(--navy)}
+  .step-btn.active .n{border-color:#fff;color:var(--navy);background:#fff}
+  .step-btn.active .t{color:#fff}
+  .step-panel{background:var(--mist);border-radius:18px;padding:42px;min-height:300px}
+  .step-panel h3{font-size:22px;margin-bottom:14px}
+  .step-panel p{color:#46586B;margin-bottom:18px}
+  .step-panel ul{list-style:none}
+  .step-panel li{padding:9px 0 9px 28px;position:relative;font-size:15px;color:#37485C}
+  .step-panel li::before{content:"";position:absolute;left:0;top:16px;width:14px;height:2px;background:var(--steel)}
+
+  /* FUNDADORES */
+  #fundadores{background:var(--navy-deep);color:#fff}
+  #fundadores h2,#fundadores h3{color:#fff}
+  #fundadores .eyebrow{color:var(--steel-light)}
+  .founders{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  @media(max-width:760px){.founders{grid-template-columns:1fr}}
+  .founder{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:38px}
+  .founder .role{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--steel-light);margin-bottom:10px;font-weight:500}
+  .founder h3{font-size:22px;margin-bottom:14px}
+  .founder p{color:#C7D6E4;font-size:15px}
+  .founder ul{margin-top:18px;list-style:none}
+  .founder li{font-size:14px;color:#A9BDD0;padding:6px 0 6px 22px;position:relative}
+  .founder li::before{content:"";position:absolute;left:0;top:13px;width:10px;height:10px;border:2px solid var(--steel);border-radius:50%}
+
+  /* MÉTRICAS */
+  .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;text-align:center}
+  .metric{padding:36px 16px;border-radius:16px;background:var(--mist)}
+  .metric .num{font-size:clamp(34px,4.5vw,52px);font-weight:700;color:var(--navy);letter-spacing:-.02em}
+  .metric .num span{color:var(--steel)}
+  .metric .lbl{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#52647A;margin-top:6px;font-weight:400}
+  .metrics-note{margin-top:22px;font-size:13px;color:#7A8BA0}
+
+  /* SERVICIOS */
+  #servicios{background:var(--mist)}
+  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+  .svc{background:#fff;border-radius:16px;padding:34px 28px;border:1px solid #DEE8F1;display:flex;flex-direction:column}
+  .svc h3{font-size:18px;margin-bottom:10px}
+  .svc p{font-size:14px;color:#52647A;flex:1}
+  .svc .tag{align-self:flex-start;margin-bottom:16px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);font-weight:500;border:1px solid var(--steel-light);padding:5px 12px;border-radius:999px}
+
+  /* CTA */
+  #contacto{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-deep) 100%);color:#fff;text-align:center}
+  #contacto h2{color:#fff;max-width:22ch;margin:0 auto}
+  #contacto p{color:#C7D6E4;max-width:52ch;margin:20px auto 36px}
+  .contact-line{margin-top:40px;font-size:14px;color:var(--steel-light)}
+  .contact-line a{color:#fff;text-decoration:none;font-weight:500}
+
+  footer{background:var(--navy-deep);color:#7A93AB;text-align:center;padding:26px;font-size:12px;letter-spacing:.06em}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important}
+    .reveal{opacity:1;transform:none}
+    .arc{stroke-dashoffset:0}
+    .dot1,.dot2{opacity:1}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Evolutia Empresarial">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M82 28 A40 40 0 1 0 82 72" fill="none" stroke="#16334D" stroke-width="11" stroke-linecap="round"/>
+        <circle cx="78" cy="58" r="7" fill="#5B82A8"/>
+        <circle cx="88" cy="38" r="7" fill="#16334D"/>
+      </svg>
+      <span>EVOLUTIA <em>EMPRESARIAL</em></span>
+    </a>
+    <div class="navlinks">
+      <a href="#problema">El reto</a>
+      <a href="#areas">Áreas</a>
+      <a href="#metodologia">Metodología</a>
+      <a href="#fundadores">Socios</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto" class="nav-cta">Agenda un diagnóstico</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>EVOLUTIA<small>EMPRESARIAL</small></h1>
+      <p class="hero-sub">Consultoría boutique y formación comercial. Convertimos equipos de ventas en motores de crecimiento: con método, con medición y sin depender de descuentos.</p>
+      <div class="hero-actions">
+        <a class="btn btn-light" href="#contacto">Agenda una sesión diagnóstica</a>
+        <a class="btn btn-ghost" href="#metodologia">Conoce la metodología</a>
+      </div>
+    </div>
+    <div class="orbit-stage" aria-hidden="true">
+      <svg viewBox="0 0 240 240">
+        <path class="arc" d="M196 62 A98 98 0 1 0 196 178" fill="none" stroke="#9FBCD6" stroke-width="20" stroke-linecap="round"/>
+        <circle class="dot1" cx="186" cy="148" r="15" fill="#5B82A8"/>
+        <circle class="dot2" cx="210" cy="98" r="15" fill="#FFFFFF"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">El reto comercial</span>
+      <h2>El problema no es el precio. Es cómo el precio se volvió la base de la decisión.</h2>
+      <p>Estos son los cuatro síntomas que más vemos en equipos comerciales antes de trabajar con nosotros. ¿Reconoces alguno en el tuyo?</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain reveal">
+        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></div>
+        <h3>Inseguridad en el cierre</h3>
+        <p>Vendedores que dominan el producto pero dudan en el momento decisivo. La venta se enfría justo donde debía concretarse.</p>
+      </div>
+      <div class="pain reveal">
+        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M19 5 5 19M6.5 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm11 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg></div>
+        <h3>Dependencia del descuento</h3>
+        <p>El descuento se volvió la única herramienta de negociación. Cada venta erosiona margen y entrena al cliente a esperar menos precio.</p>
+      </div>
+      <div class="pain reveal">
+        <div class="glyph"><svg viewBox="0 0 24 24"><circle cx="12" cy="6" r="3"/><circle cx="5" cy="18" r="3"/><circle cx="19" cy="18" r="3"/><path d="M12 9v3m0 0-5 3.5M12 12l5 3.5"/></svg></div>
+        <h3>Red desaprovechada</h3>
+        <p>Clientes satisfechos, aliados y referidos que nadie cultiva. La cartera crece por esfuerzo individual, no por estrategia.</p>
+      </div>
+      <div class="pain reveal">
+        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"/></svg></div>
+        <h3>Resultados sin método</h3>
+        <p>Los números dependen de dos o tres estrellas. Sin un proceso comercial común, el resultado del mes es una lotería.</p>
+      </div>
+    </div>
+    <div class="cause-block reveal">
+      <p class="cause-intro">Los síntomas cambian por industria, pero la raíz suele estar en la forma de comunicarse, liderar y ejecutar. La capacitación efectiva no parte de "dar temas": parte de entender qué está bloqueando el resultado.</p>
+      <div class="cause-cols">
+        <div class="cause-col">
+          <h3>Síntomas visibles</h3>
+          <ul>
+            <li>Ventas inconsistentes</li>
+            <li>Descuentos innecesarios</li>
+            <li>Equipos desmotivados</li>
+            <li>Líderes saturados</li>
+            <li>Comunicación fragmentada</li>
+          </ul>
+        </div>
+        <div class="cause-arrow" aria-hidden="true">
+          <svg viewBox="0 0 48 24"><path d="M2 12h38m0 0-8-8m8 8-8 8" fill="none" stroke="#5B82A8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cause-col cause-col-dark">
+          <h3>Causas que trabajamos</h3>
+          <ul>
+            <li>Falta de criterio comercial</li>
+            <li>Creencias que frenan la acción</li>
+            <li>Poca inteligencia emocional</li>
+            <li>Liderazgo sin herramientas</li>
+            <li>Cultura sin acuerdos claros</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="areas">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Áreas de trabajo</span>
+      <h2>Un modelo modular: se combina según el diagnóstico de cada empresa</h2>
+      <p>No vendemos un curso estándar. Cada programa se arma con las áreas que tu organización realmente necesita.</p>
+    </div>
+    <div class="area-grid reveal">
+      <div class="area"><h3>Ventas y cierre comercial</h3><p>Habilidades comerciales y conversaciones de cierre con seguridad.</p></div>
+      <div class="area"><h3>Liderazgo y equipos</h3><p>Claridad, criterio y herramientas para líderes y sus equipos.</p></div>
+      <div class="area"><h3>Inteligencia emocional</h3><p>Gestión emocional aplicada al trabajo y a la venta.</p></div>
+      <div class="area"><h3>Comunicación efectiva</h3><p>Alineación entre áreas y conversaciones que destraban la ejecución.</p></div>
+      <div class="area"><h3>Cultura y pertenencia</h3><p>Acuerdos claros y un equipo que se queda porque quiere.</p></div>
+      <div class="area"><h3>Servicio y experiencia cliente</h3><p>Interacciones que sostienen la relación más allá de la venta.</p></div>
+    </div>
+    <div class="chips reveal">
+      <span class="chips-label">Módulos complementarios</span>
+      <span class="chip">Negociación</span>
+      <span class="chip">Productividad</span>
+      <span class="chip">Adaptación al cambio</span>
+      <span class="chip">Marca personal ejecutiva</span>
+      <span class="chip">IA aplicada</span>
+      <span class="chip">Bienestar emocional en el trabajo</span>
+    </div>
+  </div>
+</section>
+
+<section id="metodologia">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Evolutia Comercial 360</h2>
+      <p>Un ciclo completo en cuatro etapas: diagnosticamos antes de recetar, diseñamos a la medida, entrenamos en la práctica y medimos hasta que el cambio se sostenga solo. Explora cada etapa.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step-list" role="tablist" aria-label="Etapas de la metodología">
+        <button class="step-btn active" role="tab" aria-selected="true" data-step="0"><span class="n">1</span><span class="t">Diagnóstico</span></button>
+        <button class="step-btn" role="tab" aria-selected="false" data-step="1"><span class="n">2</span><span class="t">Diseño a la medida</span></button>
+        <button class="step-btn" role="tab" aria-selected="false" data-step="2"><span class="n">3</span><span class="t">Entrenamiento en acción</span></button>
+        <button class="step-btn" role="tab" aria-selected="false" data-step="3"><span class="n">4</span><span class="t">Seguimiento y medición</span></button>
+      </div>
+      <div class="step-panel" id="stepPanel" role="tabpanel"></div>
+    </div>
+  </div>
+</section>
+
+<section id="fundadores">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Quiénes somos</span>
+      <h2>Dos trayectorias, una misma convicción: los equipos evolucionan cuando se les da método y confianza.</h2>
+    </div>
+    <div class="founders">
+      <div class="founder reveal">
+        <div class="role">Socia fundadora</div>
+        <h3>Thalía Salgado</h3>
+        <p>25 años como Directora Comercial y de Marketing en el sector inmobiliario mexicano. Especialista en soft skills, negociación sin descuentos y transformación de equipos de venta.</p>
+        <ul>
+          <li>Estrategia comercial y formación de equipos de alto rendimiento</li>
+          <li>Metodologías propias de venta consultiva y cierre con confianza</li>
+          <li>Conferencista y mentora de líderes comerciales en México y LATAM</li>
+        </ul>
+      </div>
+      <div class="founder reveal">
+        <div class="role">Socio fundador</div>
+        <h3>Luis Carlos Mendoza</h3>
+        <p>MBA con más de 20 años de experiencia en prospección estratégica y desarrollo organizacional, acompañando a empresas en procesos de crecimiento y profesionalización comercial.</p>
+        <ul>
+          <li>Prospección y construcción de pipeline B2B</li>
+          <li>Desarrollo organizacional y estructuras comerciales</li>
+          <li>Diseño de procesos y gobernanza para equipos de venta</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resultados">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Trayectoria conjunta</span>
+      <h2>La experiencia detrás de Evolutia</h2>
+    </div>
+    <div class="metrics reveal">
+      <div class="metric"><div class="num" data-target="9500">0</div><div class="lbl">Ejecutivos formados</div></div>
+      <div class="metric"><div class="num" data-target="700">0</div><div class="lbl">Cursos impartidos</div></div>
+      <div class="metric"><div class="num" data-target="280">0</div><div class="lbl">Conferencias</div></div>
+      <div class="metric"><div class="num" data-target="360">0</div><div class="lbl">Empresas acompañadas</div></div>
+    </div>
+    <p class="metrics-note reveal">Cifras acumuladas de la trayectoria profesional de los socios fundadores en proyectos previos.</p>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Portafolio de servicios</span>
+      <h2>Soluciones según el momento de tu empresa</h2>
+      <p>Desde una intervención puntual hasta un acompañamiento de transformación completa. Toda propuesta inicia con un diagnóstico.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <span class="tag">45 a 90 min</span>
+        <h3>Conferencia de alto impacto</h3>
+        <p>Ideal para abrir consciencia, activar al equipo o acompañar eventos internos y kick-offs comerciales.</p>
+      </div>
+      <div class="svc reveal">
+        <span class="tag">Intervención</span>
+        <h3>Talleres corporativos</h3>
+        <p>Sesiones intensivas presenciales o en línea sobre cierre con confianza, negociación sin descuento, prospección y soft skills. Diseñadas sobre el diagnóstico de tu equipo, no de catálogo.</p>
+      </div>
+      <div class="svc reveal">
+        <span class="tag">3 a 6 meses</span>
+        <h3>Programa intensivo</h3>
+        <p>Entrenamiento modular con práctica entre sesiones y medición de avance. Ideal para desarrollar hábitos, dar seguimiento y sostener cambios.</p>
+      </div>
+      <div class="svc reveal">
+        <span class="tag">12 meses</span>
+        <h3>Programa anual</h3>
+        <p>Acompañamiento integral para una transformación profunda y sostenida a lo largo del año, con líderes y equipo trabajando en paralelo.</p>
+      </div>
+      <div class="svc reveal">
+        <span class="tag">Estrategia</span>
+        <h3>Consultoría comercial</h3>
+        <p>Diagnóstico de estructura, procesos y pipeline. Rediseño del modelo comercial: roles, indicadores, gobernanza y rutas de crecimiento para la dirección.</p>
+      </div>
+      <div class="svc reveal">
+        <span class="tag">1:1 o grupal</span>
+        <h3>Mentoría a líderes</h3>
+        <p>Acompañamiento a dirección, gerencias o líderes comerciales para liderar la implementación, sostener el método y desarrollar a su propio equipo.</p>
+      </div>
+    </div>
+    <p class="metrics-note reveal">La duración y profundidad dependen del objetivo: sensibilizar, entrenar, transformar hábitos o acompañar la ejecución.</p>
+  </div>
+</section>
+
+<section id="entregables">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Lo que te llevas</span>
+      <h2>No prometemos magia. Prometemos claridad, metodología, entrenamiento y seguimiento.</h2>
+    </div>
+    <div class="cause-cols deliver-cols reveal">
+      <div class="cause-col">
+        <h3>Indicadores de avance</h3>
+        <ul>
+          <li>Mejor calidad de conversaciones comerciales</li>
+          <li>Mayor seguridad para defender valor y precio</li>
+          <li>Liderazgo más claro y menos reactivo</li>
+          <li>Mejor comunicación entre áreas</li>
+          <li>Plan de acción posterior al entrenamiento</li>
+        </ul>
+      </div>
+      <div class="cause-arrow" aria-hidden="true">
+        <svg viewBox="0 0 48 24"><path d="M2 12h38m0 0-8-8m8 8-8 8" fill="none" stroke="#5B82A8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="cause-col cause-col-dark">
+        <h3>Entregables posibles</h3>
+        <ul>
+          <li>Diagnóstico inicial de necesidades</li>
+          <li>Workbook o guía de trabajo por sesión</li>
+          <li>Herramientas, scripts y plantillas aplicables</li>
+          <li>Resumen ejecutivo de hallazgos</li>
+          <li>Plan de siguientes pasos o plan 90 días</li>
+        </ul>
+      </div>
+    </div>
+    <p class="metrics-note reveal">Los indicadores específicos se definen con cada empresa: ventas, desempeño, rotación, clima, servicio, liderazgo o implementación.</p>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <span class="eyebrow reveal">Siguiente paso</span>
+    <h2 class="reveal">Empecemos por entender a tu equipo</h2>
+    <p class="reveal">Agenda una reunión inicial de 30 a 45 minutos, sin costo. Revisamos retos actuales, equipo, objetivos y prioridades — y con esa información diseñamos una propuesta específica de alcance, formato, duración e inversión.</p>
+    <a class="btn btn-light reveal" href="mailto:hello@thaliasalgado.com?subject=Sesión diagnóstica — Evolutia Empresarial">Agendar sesión diagnóstica</a>
+    <div class="contact-line reveal">
+      <a href="mailto:hello@thaliasalgado.com">hello@thaliasalgado.com</a> &nbsp;·&nbsp; <a href="tel:+525628151049">56 2815 1049</a> &nbsp;·&nbsp; CDMX, México
+    </div>
+  </div>
+</section>
+
+<footer>EVOLUTIA EMPRESARIAL · Consultoría boutique y formación comercial · México y LATAM</footer>
+
+<script>
+  const steps=[
+    {t:"Diagnóstico",d:"Antes de proponer cualquier solución, escuchamos: una reunión inicial para entender retos, objetivos y contexto. Después medimos. Sin diagnóstico no hay propuesta — así evitamos vender temas que tu empresa no necesita.",items:["Reunión inicial con dirección para entender retos y prioridades","Cuestionario diagnóstico a vendedores y líderes","Entrevistas y análisis de indicadores comerciales","Informe ejecutivo con hallazgos y prioridades"]},
+    {t:"Diseño a la medida",d:"Con los hallazgos en la mesa, construimos un plan específico para tu empresa: contenidos, formato, calendario e indicadores de éxito.",items:["Programa modular alineado a los retos detectados","Materiales y casos construidos con tu realidad de negocio","Definición conjunta de métricas de avance","Plan de implementación con responsables y fechas"]},
+    {t:"Entrenamiento en acción",d:"Formamos en la práctica, no en la teoría. Cada sesión termina con compromisos aplicables a la semana siguiente.",items:["Talleres vivenciales presenciales o en línea","Role plays con situaciones reales de tu mercado","Tareas de aplicación entre sesiones","Acompañamiento a líderes para sostener el cambio"]},
+    {t:"Seguimiento y medición",d:"El cambio que no se mide se diluye. Cerramos el ciclo verificando resultados y dejando capacidad instalada en el equipo.",items:["Revisión periódica de indicadores comerciales","Sesiones de refuerzo según avance real","Retroalimentación individual a vendedores clave","Informe final con resultados y siguiente etapa recomendada"]}
+  ];
+  const panel=document.getElementById('stepPanel');
+  const btns=document.querySelectorAll('.step-btn');
+  function renderStep(i){
+    const s=steps[i];
+    panel.innerHTML='<h3>'+s.t+'</h3><p>'+s.d+'</p><ul>'+s.items.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
+    btns.forEach((b,j)=>{b.classList.toggle('active',j===i);b.setAttribute('aria-selected',j===i)});
+  }
+  btns.forEach(b=>b.addEventListener('click',()=>renderStep(+b.dataset.step)));
+  renderStep(0);
+
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mio=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target,target=+el.dataset.target;
+      mio.unobserve(el);
+      if(reduce){el.textContent=target.toLocaleString('es-MX')+'+';return}
+      const dur=1400,t0=performance.now();
+      (function tick(now){
+        const p=Math.min((now-t0)/dur,1),v=Math.round(target*(1-Math.pow(1-p,3)));
+        el.innerHTML=v.toLocaleString('es-MX')+'<span>+</span>';
+        if(p<1)requestAnimationFrame(tick);
+      })(t0);
+    });
+  },{threshold:.5});
+  document.querySelectorAll('.num').forEach(el=>mio.observe(el));
+</script>
+</body>
+</html>
