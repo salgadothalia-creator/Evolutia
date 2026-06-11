@@ -52,7 +52,12 @@
   .btn-ghost:hover{background:rgba(255,255,255,.08)}
   .orbit-stage{display:flex;justify-content:center}
   .orbit-stage svg{width:min(300px,70vw);height:auto}
-  @media(max-width:860px){.hero-grid{grid-template-columns:1fr}.orbit-stage{order:-1}.orbit-stage svg{width:160px}}
+  @media(max-width:860px){
+    header{padding:110px 0 70px}
+    .hero-grid{grid-template-columns:1fr;gap:28px}
+    .orbit-stage{order:2;justify-content:flex-start}
+    .orbit-stage svg{width:110px}
+  }
   @keyframes drawArc{from{stroke-dashoffset:760}to{stroke-dashoffset:0}}
   @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
   .arc{stroke-dasharray:760;stroke-dashoffset:760;animation:drawArc 1.6s ease forwards .2s}
@@ -159,7 +164,7 @@
 
   footer{background:var(--navy-deep);color:#7A93AB;text-align:center;padding:26px;font-size:12px;letter-spacing:.06em}
 
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .js .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){
     *{animation:none !important;transition:none !important}
@@ -458,6 +463,7 @@
 <footer>EVOLUTIA EMPRESARIAL · Consultoría boutique y formación comercial · México y LATAM</footer>
 
 <script>
+  document.documentElement.classList.add('js');
   const steps=[
     {t:"Diagnóstico",d:"Antes de proponer cualquier solución, escuchamos: una reunión inicial para entender retos, objetivos y contexto. Después medimos. Sin diagnóstico no hay propuesta — así evitamos vender temas que tu empresa no necesita.",items:["Reunión inicial con dirección para entender retos y prioridades","Cuestionario diagnóstico a vendedores y líderes","Entrevistas y análisis de indicadores comerciales","Informe ejecutivo con hallazgos y prioridades"]},
     {t:"Diseño a la medida",d:"Con los hallazgos en la mesa, construimos un plan específico para tu empresa: contenidos, formato, calendario e indicadores de éxito.",items:["Programa modular alineado a los retos detectados","Materiales y casos construidos con tu realidad de negocio","Definición conjunta de métricas de avance","Plan de implementación con responsables y fechas"]},
